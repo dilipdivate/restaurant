@@ -15,11 +15,18 @@ export const createMember = catchAsyncErrors(async (req, res) => {
 });
 
 export const getMember = catchAsyncErrors(async (req, res) => {
-    
-  const m = Member.batchGet();
+  
+  try {
 
-  res.status(201).json({
+  const memberId = req.body.id
+  const m = await Member.get(memberId);
+  console.log(m)
+  res.status(200).json({
     success: true,
    m,
   });
+} catch (e) {
+  console.log(e)
+  return e
+}
 });
