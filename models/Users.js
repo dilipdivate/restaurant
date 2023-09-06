@@ -3,7 +3,12 @@ import dynamoose from 'dynamoose';
 import dynamoClient from '../config/dynamodb.js'
 
 const UserSchema = new dynamoose.Schema({
-    id : Number,
+
+    id: {
+        type: String,
+        hashKey: true,
+      },
+
     name: String,
     mobileNumber: String,
     email : String,
@@ -12,6 +17,8 @@ const UserSchema = new dynamoose.Schema({
     state : String,
     pincode : String,
     password : String,
-});
+}, {
+    timestamps: true,
+  });
 
 export default dynamoose.model("Members", UserSchema);
