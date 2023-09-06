@@ -14,12 +14,12 @@ export const createMember = catchAsyncErrors(async (req, res) => {
     });
 });
 
-export const addMember = catchAsyncErrors(async (req, res) => {
-  
-    const member = await Member.create(req.body);
-  
-    res.status(201).json({
-      success: true,
-      member,
-    });
+export const getMember = catchAsyncErrors(async (req, res) => {
+    
+  const m = Member.batchGet();
+
+  res.status(201).json({
+    success: true,
+   m,
+  });
 });
