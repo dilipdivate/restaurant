@@ -3,13 +3,21 @@ import dynamoClient from '../config/dynamodb.js'
 
 const TiffinSchema = new dynamoose.Schema({
    
-   tiffin_id :  Number,
-    tiffin_name : String,
+    id: {
+        type: String,
+        hashKey: true,
+      },
+
+      name : String,
     category : String,
+    quantity : String,
+    unit : String,
     Price : String,
     discount : String,
     dish_description : String,
-    active : Boolean
-});
+    active : Boolean,
+}, {
+    timestamps: true,
+  });
 
 export default dynamoose.model("Tiffins", TiffinSchema);

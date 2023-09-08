@@ -1,15 +1,15 @@
-import Dishes from '../models/Dishes.js';
+import OrderDishes from '../models/Order_Dishes.js';
 
 import catchAsyncErrors from '../middleware/catchAsyncErrors.js';
 
 //Create Product -- Admin
-export const createDish = catchAsyncErrors(async (req, res) => {
+export const createOrderDish = catchAsyncErrors(async (req, res) => {
     
-    const dish = await Dishes.create(req.body);
+    const Orderdish = await OrderDishes.create(req.body);
   
     res.status(201).json({
       success: true,
-      dish,
+      Orderdish,
     });
 });
 
@@ -68,11 +68,10 @@ export const deleteDish = catchAsyncErrors(async (req, res) => {
 export const updateDish = catchAsyncErrors(async (req, res) => {
   
   try {
-console.log("before: ",req.body)
+
   const dishId = req.body.id
-  Dishes.update({dishId, name: req.body.name, category: req.body.category,quantity: req.body.quantity, price: req.body.Price, discount: req.body.discount})
-  console.log("after: ",req.body)
-  console.log("dishes: ",Dishes)
+  Dishes.update({dishId, name: req.body.dish_name, category: req.body.category,quantity: req.body.quantity, price: req.body.Price, discount: req.body.discount})
+
   res.status(200).json({
     success: true,
  

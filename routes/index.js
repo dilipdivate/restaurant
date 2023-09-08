@@ -1,15 +1,17 @@
 import express from 'express'
 const router = express.Router();
 
-import {  createMember, getMember } from '../controllers/members.js';  
+import {  createMember, getAllMembers, getMemberById } from '../controllers/members.js';  
 import { createBranch } from '../controllers/branches.js';
 import { createCategory } from '../controllers/categories.js';
 import { createBranchUser } from '../controllers/branchUsers.js';
 import { createSubCategory } from '../controllers/subCategories.js';
-import { createDish } from '../controllers/dishes.js';
+import { createDish, deleteDish, getAllDishes, getDishById, updateDish} from '../controllers/dishes.js';
 import { createVariant } from '../controllers/variants.js';
-import { createTiffin, getTiffin } from '../controllers/tiffins.js';
-import { createManualOrder } from '../controllers/manualorders.js';
+import { createTiffin, deleteTiffin, getAllTiffins, getTiffin, getTiffinById } from '../controllers/tiffins.js';
+import { createOrder, deleteOrder } from '../controllers/orders.js';
+import Order_Dishes from '../models/Order_Dishes.js';
+import { createOrderDish } from '../controllers/orderDishes.js';
 router.use(express.json())
 
 // router.post('/api/members', addMember)
@@ -21,7 +23,18 @@ router.post('/api/createBranchUser',createBranchUser)
 router.post('/api/createDish',createDish)
 router.post('/api/createVariant',createVariant)
 router.post('/api/createTiffin', createTiffin)
-router.post('/api/createOrder', createManualOrder)
+router.post('/api/createOrder', createOrder)
 router.get('/api/getTiffins', getTiffin)
-router.get('/api/getMember', getMember)
+router.get('/api/getMember', getMemberById)
+router.get('/api/getAllMembers', getAllMembers)
+router.get('/api/getDish', getDishById)
+router.delete('/api/deleteDish', deleteDish)
+router.put('/api/updateDish', updateDish)
+router.get('/api/getAllDishes', getAllDishes)
+router.get('/api/getTiffin', getTiffinById)
+router.get('/api/getAllTiffins', getAllTiffins)
+router.delete('/api/deleteTiffin', deleteTiffin)
+router.delete('/api/deleteOrder', deleteOrder)
+router.post('/api/OrderDish',createOrderDish)
+
 export default router;
