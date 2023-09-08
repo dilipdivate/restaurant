@@ -16,6 +16,7 @@ const TiffinSchema = new dynamoose.Schema({
     discount : String,
     dish_description : String,
     active : Boolean,
+    final_price: Number
 }, {
     timestamps: true,
   });
