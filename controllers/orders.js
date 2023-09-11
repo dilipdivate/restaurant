@@ -28,3 +28,38 @@ export const deleteOrder = catchAsyncErrors(async (req, res) => {
     return e
   }
 });
+
+export const getOrderbyId = catchAsyncErrors(async (req, res) => {
+  
+  try {
+
+  const orderID = req.body.id
+  const order = await ManualOrders.get(orderID);
+  console.log(order)
+  res.status(200).json({
+    success: true,
+   order,
+  });
+} catch (e) {
+  console.log(e)
+  return e
+}
+});
+
+export const getAllOrders = catchAsyncErrors(async (req, res) => {
+  
+  try {
+
+  // const memberId = req.body.id
+  // const m = await Member.get(memberId);
+      const order = await ManualOrders.scan().exec();
+      console.log(order)
+  res.status(200).json({
+    success: true,
+   order,
+  });
+} catch (e) {
+  console.log(e)
+  return e
+}
+});

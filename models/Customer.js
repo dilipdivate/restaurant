@@ -2,7 +2,7 @@
 import dynamoose from 'dynamoose';
 import dynamoClient from '../config/dynamodb.js'
 
-const UserSchema = new dynamoose.Schema({
+const CustomerSchema = new dynamoose.Schema({
 
     id: {
         type: String,
@@ -10,7 +10,7 @@ const UserSchema = new dynamoose.Schema({
       },
 
     name: String,
-    email : String,
+    mobileNumber: String,
     address : String,
     city : String,
     state : String,
@@ -20,4 +20,4 @@ const UserSchema = new dynamoose.Schema({
     timestamps: true,
   });
 
-export default dynamoose.model("Members", UserSchema);
+export default dynamoose.model("Customers", CustomerSchema);

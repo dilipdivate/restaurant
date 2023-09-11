@@ -10,6 +10,7 @@ const TiffinSchema = new dynamoose.Schema({
 
       name : String,
     category : String,
+    type: String,
     quantity : String,
     unit : String,
     Price : String,
