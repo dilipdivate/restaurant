@@ -68,17 +68,23 @@ export const deleteDish = catchAsyncErrors(async (req, res) => {
 export const updateDish = catchAsyncErrors(async (req, res) => {
   
   try {
-console.log("before: ",req.body)
-  const dishId = req.body.id
-  Dishes.update({dishId, name: req.body.name, category: req.body.category,quantity: req.body.quantity, price: req.body.Price, discount: req.body.discount})
-  console.log("after: ",req.body)
-  console.log("dishes: ",Dishes)
-  res.status(200).json({
-    success: true,
- 
+    let  {id,name, category,type , quantity,Price, discount,dish_description,active} = req.body
+    console.log("before: ",name, category)
+  
+    Dishes.update({id}, {name, category,type, quantity,Price,discount,dish_description,active}
+      , function(error, result) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log(result);
+        res.status(200).json({
+          success: true,
+          result
+        });
+    })
+    
+  } catch (e) {
+    console.log(e)
+    return e
+  }
   });
-} catch (e) {
-  console.log(e)
-  return e
-}
-});
