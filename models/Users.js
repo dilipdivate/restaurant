@@ -16,8 +16,29 @@ const UserSchema = new dynamoose.Schema({
     state : String,
     pincode : String,
     password : String,
-}, {
-    timestamps: true,
-  });
-
-export default dynamoose.model("Members", UserSchema);
+  }, {
+    "timestamps": {
+      "createdAt": {
+          "created_at": {
+              "type": {
+                  "value": Date,
+                  "settings": {
+                      "storage": "iso"
+                  }
+              }
+          }
+      },
+      "updatedAt": {
+          "updated": {
+              "type": {
+                  "value": Date,
+                  "settings": {
+                      "storage": "iso"
+                  }
+              }
+          }
+      }
+  
+    }});
+  
+  export default dynamoose.model("Members", UserSchema);

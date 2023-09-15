@@ -13,10 +13,12 @@ const DishesSchema = new dynamoose.Schema({
     type :String,
     quantity : String,
     unit : String,
-    Price : String,
+    price : String,
     discount : String,
-    dish_description : String,
-    active : Boolean,
+    description : String,
+    breakfast : Boolean,
+    lunch : Boolean,
+    dinner : Boolean,
     final_price: Number
 }, {
     timestamps: true,

@@ -32,13 +32,13 @@ export const deleteOrder = catchAsyncErrors(async (req, res) => {
 export const getOrderbyId = catchAsyncErrors(async (req, res) => {
   
   try {
-
+console.log(req.body)
   const orderID = req.body.id
-  const order = await ManualOrders.get(orderID);
-  console.log(order)
+  const o = await ManualOrders.get(orderID);
+  console.log(o)
   res.status(200).json({
     success: true,
-   order,
+   o,
   });
 } catch (e) {
   console.log(e)
@@ -63,3 +63,27 @@ export const getAllOrders = catchAsyncErrors(async (req, res) => {
   return e
 }
 });
+
+export const updateOrder = catchAsyncErrors(async (req, res) => {
+  
+  try {
+   let  {id,customer_mobile, customer_name,total , overall_discount,final_price, order_status,payment_status,order_mode,pickup_date} = req.body
+  //  console.log("before: ",name, category)
+ 
+   Orders.update({id}, {customer_mobile, customer_name,total, overall_discount,final_price,order_status,payment_status,order_mode,pickup_date}
+     , function(error, result) {
+       if (error) {
+           return console.log(error);
+       }
+       console.log(result);
+       res.status(200).json({
+         success: true,
+         result
+       });
+   })
+   
+ } catch (e) {
+   console.log(e)
+   return e
+ }
+ });

@@ -8,10 +8,10 @@ import { createBranchUser } from '../controllers/branchUsers.js';
 import { createSubCategory } from '../controllers/subCategories.js';
 import { createDish, deleteDish, getAllDishes, getDishById, updateDish} from '../controllers/dishes.js';
 import { createVariant } from '../controllers/variants.js';
-import { createTiffin, deleteTiffin, getAllTiffins, getTiffin, getTiffinById } from '../controllers/tiffins.js';
-import { createOrder, deleteOrder, getAllOrders, getOrderbyId } from '../controllers/orders.js';
+import { createTiffin, deleteTiffin, getAllTiffins, getTiffin, getTiffinById, updateTiffin } from '../controllers/tiffins.js';
+import { createOrder, deleteOrder, getAllOrders, getOrderbyId, updateOrder } from '../controllers/orders.js';
 import Order_Dishes from '../models/Order_Dishes.js';
-import { createOrderDish } from '../controllers/orderDishes.js';
+import { createOrderDish, getAllOrderDishes, getOrderDishByID, updateOrderDish } from '../controllers/orderDishes.js';
 import { createCustomer, getAllCustomers, getCustomerById } from '../controllers/customers.js';
 router.use(express.json())
 
@@ -31,10 +31,15 @@ router.get('/api/getMember', getMemberById)
 router.get('/api/getCustomer', getCustomerById)
 router.get('/api/getAllMembers', getAllMembers)
 router.get('/api/getAllCustomers', getAllCustomers)
+router.get('/api/getAllOrderDishes', getAllOrderDishes)
 router.get('/api/getDish', getDishById)
-router.get('/api/getOrder', getOrderbyId)
+router.post('/api/getOrder', getOrderbyId)
+router.post('/api/getOrderDish', getOrderDishByID)
 router.delete('/api/deleteDish', deleteDish)
 router.put('/api/updateDish', updateDish)
+router.put('/api/updateOrder', updateOrder)
+router.put('/api/updateOrderDish', updateOrderDish)
+router.put('/api/updateTiffin', updateTiffin)
 router.get('/api/getAllDishes', getAllDishes)
 router.get('/api/getAllOrders', getAllOrders)
 router.get('/api/getTiffin', getTiffinById)

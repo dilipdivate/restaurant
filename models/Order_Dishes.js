@@ -3,22 +3,20 @@ import dynamoClient from '../config/dynamodb.js'
 
 const OrderDishesSchema = new dynamoose.Schema({
    
-    // id: {
-    //     type: String,
-    //     hashKey: true,
-    //   },
+  //  order_id : Number,
+   dish_id : {
+    type: String,
+    hashKey: true,
+  },
+  order_id:String,
+    name : String,
+  quantity : String,
+  unit : String,
+   units:Number,
+   price:String,
+   discount:String,
+   final_price:Number
 
-    dish_name : {
-      type : Object,
-      schema : {
-dish_name: String,
-      }
-    },
-    // quantity : Number,
-    // unit : String,
-    // Price : String,
-    // discount : String,
-    // final_price: Number
 }, {
     timestamps: true,
   });
